@@ -1,25 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { MantineProvider, createTheme } from "@mantine/core";
+import "@mantine/core/styles.css";
+import Weatherblock from "./WeatherComponent/weather";
+
+const theme = createTheme({
+  primaryColor: "blue",
+  colors: {
+    dark: [
+      "#C1C2C5",
+      "#A6A7AB",
+      "#909296",
+      "#5c5f66",
+      "#373A40",
+      "#2C2E33",
+      "#25262b",
+      "#1A1B1E",
+      "#141517",
+      "#101113",
+    ],
+  },
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MantineProvider theme={theme} defaultColorScheme="dark">
+      <div
+        style={{
+          minHeight: "100vh",
+          background: "#101113",
+          padding: "20px 0",
+        }}
+      >
+        <Weatherblock />
+      </div>
+    </MantineProvider>
   );
 }
 
